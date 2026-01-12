@@ -43,5 +43,18 @@ def review_form():
 
     return render_template("index.html")
 
+@app.route("/avgrating")
+def avg_rating():
+    conn = sqlite3.connect("reviews.db")
+    cur = conn.cursor()
+    cur.execute("SELECT rating, COUNT(*) FROM reviews GROUP BY rating ORDER BY rating")
+    data = cur.fetchall()
+    conn.close()
+    
+    labels = [str(row[0]) if row[0] is not None else 'None' for row in data]
+    values = [row[1] for row in data]
+    
+    return render_template("avgrating.html", labels=labels, values=values)
+
 if __name__ == "__main__":
     app.run(debug=True)
