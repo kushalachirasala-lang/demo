@@ -31,6 +31,25 @@
             background-color: #007BFF;
             color: white;
         }
+
+        /* ⭐ STAR RATING STYLE */
+        .stars {
+            display: inline-block;
+            direction: rtl;
+            font-size: 30px;
+        }
+        .stars input {
+            display: none;
+        }
+        .stars label {
+            color: #ccc;
+            cursor: pointer;
+        }
+        .stars input:checked ~ label,
+        .stars label:hover,
+        .stars label:hover ~ label {
+            color: gold;
+        }
     </style>
 </head>
 
@@ -43,38 +62,30 @@
             <input type="email" name="email" placeholder="Email" required><br><br>
             <input type="text" name="phone" placeholder="Phone" required><br><br>
             <textarea name="review" placeholder="Write your review" required></textarea><br><br>
-            <label for="rating">Rating (1-5): </label>
-            <select name="rating" id="rating">
-                <option value="5">5 - Excellent</option>
-                <option value="4">4 - Good</option>
-                <option value="3">3 - Average</option>
-                <option value="2">2 - Poor</option>
-                <option value="1">1 - Terrible</option>
-            </select><br><br>
+
+            <!-- ⭐ STAR RATING ADDED HERE -->
+            <label>Rating:</label><br>
+            <div class="stars">
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5">★</label>
+
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4">★</label>
+
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3">★</label>
+
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2">★</label>
+
+                <input type="radio" id="star1" name="rating" value="1" required>
+                <label for="star1">★</label>
+            </div><br><br>
+
             <button type="submit">Submit</button>
         </form>
 
-        {% if reviews %}
-        <h2>All Reviews</h2>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Review</th>
-                <th>Rating</th>
-            </tr>
-            {% for r in reviews %}
-            <tr>
-                <td>{{ r["name"] }}</td>
-                <td>{{ r["email"] }}</td>
-                <td>{{ r["phone"] }}</td>
-                <td>{{ r["review"] }}</td>
-                <td>{{ r["rating"] }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        {% endif %}
+        
     </div>
 </body>
 </html>
