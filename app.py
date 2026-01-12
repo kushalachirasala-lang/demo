@@ -12,7 +12,8 @@ def create_db():
             name TEXT,
             email TEXT,
             phone TEXT,
-            review TEXT
+            review TEXT,
+            rating INTEGER
         )
     """)
     conn.commit()
@@ -27,19 +28,20 @@ def review_form():
         email = request.form["email"]
         phone = request.form["phone"]
         review = request.form["review"]
+        rating = request.form["rating"]
 
         conn = sqlite3.connect("reviews.db")
         cur = conn.cursor()
         cur.execute(
-            "INSERT INTO reviews (name, email, phone, review) VALUES (?, ?, ?, ?)",
-            (name, email, phone, review)
+            "INSERT INTO reviews (name, email, phone, review, rating) VALUES (?, ?, ?, ?, ?)",
+            (name, email, phone, review, rating)
         )
         conn.commit()
         conn.close()
 
         return "✅ Review Saved Successfully!"
 
-    return render_template("form.html")
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
