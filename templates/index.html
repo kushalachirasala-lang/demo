@@ -53,28 +53,6 @@
             </select><br><br>
             <button type="submit">Submit</button>
         </form>
-
-        {% if reviews %}
-        <h2>All Reviews</h2>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Review</th>
-                <th>Rating</th>
-            </tr>
-            {% for r in reviews %}
-            <tr>
-                <td>{{ r["name"] }}</td>
-                <td>{{ r["email"] }}</td>
-                <td>{{ r["phone"] }}</td>
-                <td>{{ r["review"] }}</td>
-                <td>{{ r["rating"] }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        {% endif %}
     </div>
 </body>
 </html>
