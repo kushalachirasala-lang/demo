@@ -12,7 +12,7 @@ conn.close()
 
 # Plot histogram of ratings
 plt.figure(figsize=(6,4))
-plt.hist(ratings, bins=range(1,7), edgecolor="black", align="left")
+plt.hist(ratings, bins=range(1,7), edgecolor="white", align="left")
 plt.title("Rating Distribution")
 plt.xlabel("Rating (1-5)")
 plt.ylabel("Number of Reviews")
