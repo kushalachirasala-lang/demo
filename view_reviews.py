@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect("reviews.db")
+conn = sqlite3.connect("SmartXML.db")
 cur = conn.cursor()
 cur.execute("SELECT * FROM reviews")
 
