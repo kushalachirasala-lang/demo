@@ -4,7 +4,7 @@ import sqlite3
 app = Flask(__name__)
 
 def create_db():
-    conn = sqlite3.connect("reviews.db")
+    conn = sqlite3.connect("SmartXML.db")
     cur = conn.cursor()
     cur.execute("""
         CREATE TABLE IF NOT EXISTS reviews (
@@ -30,7 +30,7 @@ def review_form():
         review = request.form["review"]
         rating = request.form["rating"]
 
-        conn = sqlite3.connect("reviews.db")
+        conn = sqlite3.connect("SmartXML.db")
         cur = conn.cursor()
         cur.execute(
             "INSERT INTO reviews (name, email, phone, review, rating) VALUES (?, ?, ?, ?, ?)",
@@ -45,7 +45,7 @@ def review_form():
 
 @app.route("/avgrating")
 def avg_rating():
-    conn = sqlite3.connect("reviews.db")
+    conn = sqlite3.connect("SmartXML.db")
     cur = conn.cursor()
     cur.execute("SELECT rating, COUNT(*) FROM reviews GROUP BY rating ORDER BY rating")
     data = cur.fetchall()
