@@ -60,10 +60,5 @@ def avg_rating():
 def chart():
     return render_template("chart.html")
 
-
-@app.route("/dynamicChart")
-def dynamicChart():
-    return render_template("dynamicChart.html")
-
 if __name__ == "__main__":
     app.run(debug=True)
