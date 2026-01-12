@@ -31,7 +31,11 @@
             background-color: #007BFF;
             color: white;
         }
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 7b46d1d954ab46eb53424dd388c238a63d5a5921
         /* ⭐ STAR RATING STYLE */
         .stars {
             display: inline-block;
@@ -52,22 +56,27 @@
         }
     </style>
 </head>
-
+ 
 <body>
     <div class="container">
         <h2>Submit Your Review</h2>
-
+ 
         <form method="POST">
             <input type="text" name="name" placeholder="Name" required><br><br>
             <input type="email" name="email" placeholder="Email" required><br><br>
             <input type="text" name="phone" placeholder="Phone" required><br><br>
             <textarea name="review" placeholder="Write your review" required></textarea><br><br>
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 7b46d1d954ab46eb53424dd388c238a63d5a5921
             <!-- ⭐ STAR RATING ADDED HERE -->
             <label>Rating:</label><br>
             <div class="stars">
                 <input type="radio" id="star5" name="rating" value="5">
                 <label for="star5">★</label>
+<<<<<<< HEAD
 
                 <input type="radio" id="star4" name="rating" value="4">
                 <label for="star4">★</label>
@@ -86,6 +95,25 @@
         </form>
 
         
+=======
+ 
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4">★</label>
+ 
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3">★</label>
+ 
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2">★</label>
+ 
+                <input type="radio" id="star1" name="rating" value="1" required>
+                <label for="star1">★</label>
+            </div><br><br>
+ 
+            <button type="submit">Submit</button>
+        </form>
+>>>>>>> 7b46d1d954ab46eb53424dd388c238a63d5a5921
     </div>
+    <button onclick="location.href='/avgrating'">View Average Ratings</button>
 </body>
 </html>
