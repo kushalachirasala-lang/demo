@@ -56,5 +56,14 @@ def avg_rating():
     
     return render_template("avgrating.html", labels=labels, values=values)
 
+@app.route("/chart")
+def chart():
+    return render_template("chart.html")
+
+
+@app.route("/dynamicChart")
+def dynamicChart():
+    return render_template("dynamicChart.html")
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -5,6 +5,19 @@
     <title>Average Ratings Dashboard</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
+        button {
+            margin: 10px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
         :root{--accent:#1e88e5;--muted:#666}
         body{font-family:Segoe UI,Roboto,Arial,sans-serif;background:#f7f9fc;color:#222;margin:0;padding:24px}
         .container{max-width:900px;margin:0 auto;background:#fff;border-radius:8px;padding:20px;box-shadow:0 2px 8px rgba(18,22,31,0.06)}
@@ -28,6 +41,8 @@
     </style>
 </head>
 <body>
+    <button onclick="location.reload()">Refresh Data</button><br>
+    <button onclick="window.history.back()">Go Back</button>
     <div class="container">
         <div class="header">
             <h1>Average Ratings Dashboard</h1>
@@ -49,10 +64,6 @@
         </div>
 
         <div id="nodata" class="no-data" style="display:none">No reviews available yet.</div>
-    </div>
-    <div style="height:40px">
-        <button onclick="location.reload()">Refresh Data</button><br>
-        <button onclick="window.history.back()">Go Back</button>
     </div>
 
     <script>
