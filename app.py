@@ -21,6 +21,23 @@ def create_db():
 
 create_db()
 
+def create_infodb():
+    conn = sqlite3.connect("SmartXML.db")
+    cur = conn.cursor()
+    cur.execute("""
+                CREATE TABLE IF NOT EXISTS contactinfo (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                contactname TEXT,
+                contactmail TEXT,
+                contactno TEXT,
+                contactmsg TEXT
+                )
+                """)
+    conn.commit()
+    conn.close()
+
+create_infodb()
+
 @app.route("/", methods=["GET", "POST"])
 def review_form():
     if request.method == "POST":
@@ -42,6 +59,38 @@ def review_form():
         return "✅ Review Saved Successfully!"
 
     return render_template("index.html")
+
+@app.route("/contact", methods=["GET", "POST"])
+def contact_form():
+    if request.method == "POST":
+        contactname = request.form["contactname"]
+        contactmail = request.form["contactmail"]
+        contactno = request.form["contactno"]
+        contactmsg = request.form["contactmsg"]
+
+        conn = sqlite3.connect("SmartXML.db")
+        cur = conn.cursor()
+        cur.execute(
+            "INSERT INTO contactinfo (contactname, contactmail, contactno, contactmsg) VALUES (?, ?, ?, ?)",
+            (contactname, contactmail, contactno, contactmsg)
+            )
+        
+        conn.commit()
+        conn.close()
+
+        return "✅ Contact Saved Successfully!"
+    
+    return render_template("contact.html")
+
+@app.route("/contacts")
+def view_contact():
+    conn = sqlite3.connect("SmartXML.db")
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM contactinfo")
+    data = cur.fetchall()
+    conn.close()
+
+    return render_template("contacts.html", data = data)
 
 @app.route("/avgrating")
 def avg_rating():
