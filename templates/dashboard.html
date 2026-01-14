@@ -172,7 +172,6 @@
                 </div>
             `;
             get_values();
-            initChart();
         }
 
         // NEW: Function to handle the API POST call
@@ -213,7 +212,7 @@
 
         let myChart;
 
-        async function get_values(event) {
+        async function get_values() {
             try {
                 const response = await fetch('/api/service/get');
                 
@@ -223,7 +222,6 @@
                 }
 
                 const apiData = await response.json();
-                console.log("Fetched Data:", apiData);
 
                 // Since the Flask API returns the object directly, 
                 // we use apiData instead of apiData.data
@@ -269,10 +267,6 @@
             } catch (error) {
                 console.error("API Fetch Error:", error);
             }
-        }
-
-        function initChart() {
-            
         }
 
         function updateChart() {
