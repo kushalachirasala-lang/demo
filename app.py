@@ -9,7 +9,8 @@ app = Flask(__name__)
 # CORS CONFIGURATION (IMPORTANT)
 # ==============================
 FRONTEND_URL = os.getenv(
-    "https://smart-xml-solutions.onrender.com/",
+    "https://smart-xml-solutions.vercel.app/",
+    "http://localhost:5175",
     "http://localhost:5173"  # fallback for local dev
 )
 
@@ -190,4 +191,4 @@ def login():
 # RUN APP (RENDER SAFE)
 # ==============================
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(debug=False)
