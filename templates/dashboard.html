@@ -119,7 +119,7 @@
             if (!confirm("Are you sure?")) return;
 
             try {
-                const response = await fetch(`/api/contact/delete/${id}`, { method: 'GET' });
+                const response = await fetch(`/api/contact/delete/${id}`, { method: 'DELETE' });
                 if (response.ok) {
                     // Refresh the list immediately without page reload
                     loadContacts();
