@@ -5,15 +5,7 @@ import os
 
 app = Flask(__name__)
 
-# ==============================
-# CORS CONFIGURATION (IMPORTANT)
-# ==============================
-FRONTEND_URL = os.getenv(
-    "https://smart-xml-solutions.onrender.com/",
-    "http://localhost:5173"  # fallback for local dev
-)
-
-CORS(app, origins=[FRONTEND_URL])
+CORS(app)
 
 DB_NAME = "SmartXML.db"
 
@@ -190,4 +182,4 @@ def login():
 # RUN APP (RENDER SAFE)
 # ==============================
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(debug=False)
