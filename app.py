@@ -5,15 +5,7 @@ import os
 
 app = Flask(__name__)
 
-# ==============================
-# CORS CONFIGURATION (IMPORTANT)
-# ==============================
-FRONTEND_URL = os.getenv(
-    "https://smart-xml-solutions.vercel.app/",
-    "http://localhost:5173"  # fallback for local dev
-)
-
-CORS(app, origins=[FRONTEND_URL])
+CORS(app)
 
 DB_NAME = "SmartXML.db"
 
