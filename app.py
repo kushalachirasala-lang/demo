@@ -10,7 +10,6 @@ app = Flask(__name__)
 # ==============================
 FRONTEND_URL = os.getenv(
     "https://smart-xml-solutions.vercel.app/",
-    "http://localhost:5175",
     "http://localhost:5173"  # fallback for local dev
 )
 
