@@ -46,6 +46,25 @@ def create_infodb():
 
 create_infodb()
 
+@app.route("/api/contacts/all", methods=["GET"])
+def get_all_contacts():
+    conn = sqlite3.connect("SmartXML.db")
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM contactinfo")
+    rows = cur.fetchall()
+    conn.close()
+
+    contacts = []
+    for row in rows:
+        contacts.append({
+            "id" : row[0],
+            "name" : row[1],
+            "email" : row[2],
+            "phone" : row[3],
+            "message" : row[4]
+        })
+    return jsonify(contacts)
+
 @app.route("/api/contact/save", methods=["GET", "POST"])
 def contact_form():
     if request.method == "POST":
@@ -80,7 +99,7 @@ def delete_contact(contact_id):
     conn.commit()
     conn.close()
 
-    return redirect("/dashboard")
+    return jsonify({"success" : True, "message" : "Deleted successfully"}), 200
 
 @app.route("/api/service/get", methods=["GET"])
 def get_service():
@@ -135,13 +154,7 @@ def login():
 @app.route("/dashboard")
 @app.route('/')
 def dashboard():
-    conn = sqlite3.connect("SmartXML.db")
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM contactinfo")
-    data = cur.fetchall()
-    conn.close()
-
-    return render_template("dashboard.html", data=data)
+    return render_template("dashboard.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
