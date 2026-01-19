@@ -9,5 +9,4 @@ Jinja2==3.1.6
 MarkupSafe==3.0.3
 packaging==25.0
 Werkzeug==3.1.5
-python-3.11.9
-typing-extensions==4.11.0
+Python 3.13.3
